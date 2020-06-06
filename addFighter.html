@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Dodaj novog borca</title>
+     <link
+     rel="stylesheet"
+     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+     crossorigin="anonymous"
+   />
+   <script
+     src="https://code.jquery.com/jquery-3.5.1.min.js"
+     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+     crossorigin="anonymous">
+   </script>
+
+ </head>
+ <body>
+     <div class="jumbotron">
+        <a href="index.php" style="float: left;">BACK</a>
+        <h1 style="float: left;">CFC 3 - ADD NEW FIGHTER</h1>
+     </div>
+     <div class="container">
+         <form id="form" action="operations/Insert.php" method="POST" enctype="multipart/form-data" style="width: 40%;">
+             <div>
+                 <label >Name</label>
+                 <input type="text" name="name" id="name">
+             </div>
+
+             <div>
+                 <label >Age</label>
+                 <input  name="age" type="number" min="0" id="age">
+             </div>
+
+             <div>
+                 <label >Cat Info</label>
+                 <input type="text" name="info" id="info">
+             </div>
+
+
+             <div>
+                 <div>
+                     <div>
+                         <label >Wins</label>
+                         <input type="number" min="0" name="wins" id="wins">
+                     </div>
+                 </div>
+
+                 <div>
+                     <div >
+                         <label >Loss</label>
+                         <input  type="number" min="0" name="loss" id="loss">
+                     </div>
+                 </div>
+             </div>
+
+             <div>
+                 <label class="col-sm-4">Cat Image</label>
+                 <input class="form-control col-sm-8" type="file" name="image" id="catImagePath">
+             </div>
+
+             <div>
+             <input type="submit"  name="submit" id="btnSubmit">
+             <input type="reset" name="reset" id="btnReset" value="Reset">
+             </div>
+
+         </form>
+     </div>
+ </body>
+
+ <script>
+
+     $(document).ready(function() {
+         $("#btnSubmit").on("click", function(event) {
+             event.preventDefault();
+
+             var name = $("#name").val();
+             var age = $("#age").val();
+             var info = $("#info").val();
+             var wins = $("#wins").val();
+             var loss = $("#loss").val();
+             var imagePath = $("#catImagePath").val();
+             if(name =='' || age == '' || info == '' || wins == '' || loss == '' || imagePath.length == 0) {
+                alert("Insert all parameters!");
+             } else {
+                 $("#btnSubmit").unbind('click').click();
+             }
+         })
+     })
+ </script>
+ </html>
